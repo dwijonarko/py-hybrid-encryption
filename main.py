@@ -1,6 +1,6 @@
-from utils import hc_util,rsa_util,histogram_util,frequency_util
-from utils.rsa_util import RSAHelper
-from collections import Counter
+from utils.RSAHelper import RSAHelper
+from utils.HCHelper import HCHelper
+from utils.CharHelper import CharHelper
 from base64 import b64decode, b64encode
 
 menu_options = {
@@ -27,7 +27,7 @@ if __name__ == '__main__':
 			print('Wrong input. Please enter a number ...')
 		# Check what choice was entered and act accordingly
 		if option == 1:
-				hc_util.enkripsi("sources/loremm.txt") #hasil disimpan di file enkripsi.txt
+				HCHelper.enkripsi("sources/loremm.txt") #hasil disimpan di file enkripsi.txt
 				
 				key_size = 1024
 
@@ -57,46 +57,11 @@ if __name__ == '__main__':
 			f.close()
 
 			#decrypt hillcipher
-			hc_util.dekripsi('results/rsa_dekripsi.txt')
+			HCHelper.dekripsi('results/rsa_dekripsi.txt')
 		elif option == 3:
-			# Original Text Histogram and Frequency Analysis
-			# Read the original text
-			with open('sources/loremm.txt', 'r') as file:
-				original = file.read()
-			
-			histogram_util.plot_histogram(original)
-
-			# Menghitung frekuensi bigram
-			bigram_counts = Counter([original[i:i+2] for i in range(len(original)-1)])
-
-			# Visualisasi frekuensi bigram
-			frequency_util.plot_ngram_frequency(bigram_counts, 'Bigram')
-
-			# Menghitung frekuensi trigram
-			trigram_counts = Counter([original[i:i+3] for i in range(len(original)-2)])
-
-			# Visualisasi frekuensi trigram
-			frequency_util.plot_ngram_frequency(trigram_counts, 'Trigram')
+			CharHelper.main('sources/loremm.txt')
 		elif option == 4:
-			# Encrypted Text Histogram and Frequency Analysis
-			# Read the encrypted text
-			with open('results/enkripsi.txt', 'r') as file:
-				encrypted = file.read()
-			
-			histogram_util.plot_histogram(encrypted)
-
-			# Menghitung frekuensi bigram
-			bigram_counts = Counter([encrypted[i:i+2] for i in range(len(encrypted)-1)])
-
-			# Visualisasi frekuensi bigram
-			frequency_util.plot_ngram_frequency(bigram_counts, 'Bigram')
-
-			# Menghitung frekuensi trigram
-			trigram_counts = Counter([encrypted[i:i+3] for i in range(len(encrypted)-2)])
-
-			# Visualisasi frekuensi trigram
-			frequency_util.plot_ngram_frequency(trigram_counts, 'Trigram')
-
+			CharHelper.main('results/rsa_enkripsi.txt')
 		elif option == 5:
 			print('Thank you for using this program. Please press enter')
 			exit()
