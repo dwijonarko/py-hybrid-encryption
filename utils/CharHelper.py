@@ -1,16 +1,15 @@
 import matplotlib.pyplot as plt
 import string
 class CharHelper:
-    def plot_ngram_frequency(ngram_counts, ngram_type):
+    def plot_ngram_frequency(plot,ngram_counts, ngram_type,source):
         ngrams = list(ngram_counts.keys())
         frequencies = list(ngram_counts.values())
-
+        plt.subplot(plot)
         plt.bar(ngrams, frequencies)
         plt.xlabel(ngram_type)
         plt.ylabel('Frequency')
-        plt.title(f'Frequency {ngram_type} in Encrypted Text')
+        plt.title(f'Frequency {ngram_type} in {source} Text')
         plt.xticks(rotation=90)
-        plt.show()
     
     def count_letter_freq(text):
         freq = {}
@@ -77,6 +76,11 @@ class CharHelper:
     def main(filename):
         with open(filename, 'r') as f:
             text = f.read()
+        if filename == 'sources/original.txt':
+            source = 'Original'
+        else:
+            source = 'Encrypted'
+
         letter_freq = CharHelper.count_letter_freq(text)
         word_freq = CharHelper.count_word_freq(text)
         bigram_freq = CharHelper.count_bigram_freq(text)
@@ -90,9 +94,11 @@ class CharHelper:
         print(f'Trigram Frequency {trigram_freq}')
         print(f'Special Character Frequency {special_char_freq}')
 
-        CharHelper.plot_ngram_frequency(letter_freq, 'Letter')
-        CharHelper.plot_ngram_frequency(word_freq, 'Word')
-        CharHelper.plot_ngram_frequency(bigram_freq, 'Bigram')
-        CharHelper.plot_ngram_frequency(trigram_freq, 'Trigram')
-        CharHelper.plot_ngram_frequency(special_char_freq, 'Special Character')
+        CharHelper.plot_ngram_frequency(221,letter_freq, 'Letter',source)
+        CharHelper.plot_ngram_frequency(222,word_freq, 'Word',source)
+        plt.show()
+        CharHelper.plot_ngram_frequency(321,bigram_freq, 'Bigram',source)
+        CharHelper.plot_ngram_frequency(322,trigram_freq, 'Trigram',source)
+        CharHelper.plot_ngram_frequency(323,special_char_freq, 'Special Character',source)
+        plt.show()
         

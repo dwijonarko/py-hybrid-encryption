@@ -27,7 +27,7 @@ if __name__ == '__main__':
 			print('Wrong input. Please enter a number ...')
 		# Check what choice was entered and act accordingly
 		if option == 1:
-				HCHelper.enkripsi("sources/loremm.txt") #hasil disimpan di file enkripsi.txt
+				HCHelper.enkripsi("sources/original.txt") #hasil disimpan di file enkripsi.txt
 				
 				key_size = 1024
 
@@ -59,7 +59,7 @@ if __name__ == '__main__':
 			#decrypt hillcipher
 			HCHelper.dekripsi('results/rsa_dekripsi.txt')
 		elif option == 3:
-			CharHelper.main('sources/loremm.txt')
+			CharHelper.main('sources/original.txt')
 		elif option == 4:
 			CharHelper.main('results/rsa_enkripsi.txt')
 		elif option == 5:
