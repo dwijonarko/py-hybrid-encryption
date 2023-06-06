@@ -97,8 +97,9 @@ class CharHelper:
         CharHelper.plot_ngram_frequency(221,letter_freq, 'Letter',source)
         CharHelper.plot_ngram_frequency(222,word_freq, 'Word',source)
         plt.show()
-        CharHelper.plot_ngram_frequency(321,bigram_freq, 'Bigram',source)
-        CharHelper.plot_ngram_frequency(322,trigram_freq, 'Trigram',source)
-        CharHelper.plot_ngram_frequency(323,special_char_freq, 'Special Character',source)
+        CharHelper.plot_ngram_frequency(221,bigram_freq, 'Bigram',source)
+        CharHelper.plot_ngram_frequency(222,trigram_freq, 'Trigram',source)
+        plt.show()
+        CharHelper.plot_ngram_frequency(111,special_char_freq, 'Special Character',source)
         plt.show()
         
